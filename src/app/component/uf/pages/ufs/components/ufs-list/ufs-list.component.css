@@ -1,0 +1,13 @@
+td.right {
+    text-align: right;
+}
+
+th.id, td.id  {
+    text-align: center;
+    width: 110px;
+}
+
+th.excluido, td.excluido  {
+    text-align: center;
+    width: 110px;
+}
