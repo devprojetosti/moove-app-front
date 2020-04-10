@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { HttpCrudService } from 'src/app/shared/http-crud.service';
-import { ServicosService } from 'src/app/service/core/servicos.service';
-import { AuthService } from 'src/app/service/core/auth.service';
 import { Uf } from './uf.interface';
+import { environment } from 'environments/environment';
+import { HttpCrudService } from '@shared/http-crud.service';
+import { ServicosService } from '@service/core/servicos.service';
+import { AuthService } from '@service/core/auth.service';
 
 @Injectable()
 export class 

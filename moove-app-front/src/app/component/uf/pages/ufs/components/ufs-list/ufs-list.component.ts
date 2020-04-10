@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
-import { AuthService } from 'src/app/service/core/auth.service';
-import { PageBase } from 'src/app/shared/page-base';
-import { UfService } from 'src/app/component/uf/services/uf.service';
-import { AlertaService } from 'src/app/service/core/alerta.service';
+import { AuthService } from '@service/core/auth.service';
+import { PageBase } from '@shared/page-base';
+import { AlertaService } from '@service/core/alerta.service';
+import { UfService } from 'app/component/uf/services/uf.service';
 
 @Component({
-  selector: 'app-temas-list',
-  templateUrl: './temas-list.component.html',
-  styleUrls: ['./temas-list.component.css'],
+  selector: 'app-ufs-list',
+  templateUrl: './ufs-list.component.html',
+  styleUrls: ['./ufs-list.component.css'],
   providers: [AuthService]
 })
 export class UfsListComponent extends PageBase implements OnInit {
