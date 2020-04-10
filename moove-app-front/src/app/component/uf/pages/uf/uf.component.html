@@ -1,0 +1,67 @@
+<div class="ui-fluid">
+    <div class="ui-g-12">
+        <div class="ui-g-12">
+            <p-card>
+                <h1>{{ readonly ? 'Visualizar' : tituloEdit }} Tema</h1>
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <p-messages [value]="error"></p-messages>
+                    </div>
+                    <div class="ui-lg-12 ui-g-12"
+                        style="padding: 0">
+                        <form [formGroup]="form"
+                            (submit)="salvar()"
+                            class="ui-g-12"
+                            novalidate>
+                            <div class="ui-g">
+                                <div class="ui-g-12">
+                                    <label>Nome:*</label>
+                                </div>
+                                <div class="ui-g-6">
+                                    <input *ngIf="!readonly"
+                                        type="text"
+                                        formControlName="nome"
+                                        pInputText />
+                                    <span *ngIf="readonly">{{ form.controls.nome.value }}</span>
+                                    <small class="text-danger">{{ getErrors('nome') }}</small>
+                                </div>
+                                <div class="ui-g-6"></div>
+                            </div>
+                            <div class="ui-g">
+                                <div class="ui-g-12">
+                                    <label>Sigla:</label>
+                                </div>
+                                <div class="ui-g-12">
+                                    <p-editor
+                                        formControlName="sigla"
+                                        [style]="{'height':'250px'}"
+                                        [readonly]="readonly">
+                                    </p-editor>
+                                    <small class="text-danger">{{ getErrors('sigla') }}</small>
+                                </div>
+                            </div>
+                            <div class="ui-g-12">
+                                <div class="ui-g-2 ui-md-2">
+                                    <button pButton
+                                        type="button"
+                                        label="Voltar"
+                                        class="ui-button-secondary"
+                                        routerLink="/ufs"
+                                        icon="fa fa-reply"></button>
+                                </div>
+                                <div class="ui-g-8 ui-md-8"></div>
+                                    <div class="ui-g-2 ui-md-2" style="text-align: right;">
+                                    <button *ngIf="!readonly"
+                                        pButton
+                                        type="submit"
+                                        label="Salvar"
+                                        icon="fa fa-save"></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+</div>
