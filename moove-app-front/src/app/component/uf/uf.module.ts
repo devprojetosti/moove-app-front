@@ -19,8 +19,7 @@ import { UfsRoutes } from './uf.routing';
     UfComponent,
     UfsComponent,
     UfsListComponent,
-    UfsFilterComponent,
-    FormComponentBase
+    UfsFilterComponent
     ]
 })
 export class UfsModule { }
