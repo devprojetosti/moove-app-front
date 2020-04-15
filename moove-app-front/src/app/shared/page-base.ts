@@ -106,3 +106,7 @@ export class PageBase {
     return today;
   }
 }
+
+interface Converter {
+  convert(obj: any): string;
+}

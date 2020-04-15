@@ -3,11 +3,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TokenInterceptor } from '@service/core/interceptor.service';
-import { DadosCadastroModule } from '@shared/dados-cadastro/dados-cadastro.module';
-import { ErrorComponent } from '@shared/error/error.component';
-import { PessoaFisicaModule } from '@shared/pessoa-fisica/pessoa-fisica.module';
-import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AccordionModule } from 'primeng/accordion';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -47,11 +42,9 @@ import { PanelModule } from 'primeng/panel';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { PasswordModule } from 'primeng/password';
 import { PickListModule } from 'primeng/picklist';
-import { CardModule, ConfirmDialogModule, GrowlModule, TriStateCheckboxModule } from 'primeng/primeng';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RatingModule } from 'primeng/rating';
-import { ScheduleModule } from 'primeng/schedule';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { SlideMenuModule } from 'primeng/slidemenu';
@@ -69,18 +62,16 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { TooltipModule } from 'primeng/tooltip';
 import { TreeModule } from 'primeng/tree';
 import { TreeTableModule } from 'primeng/treetable';
-import { DiaSemanaModule } from './dia-semana/dia-semana.module';
-import { BreadcrumbService } from './layout/breadcrumb.service';
-import { PrimeNgCalendarMaskModule } from 'racoon-mask';
+import { CardModule } from 'primeng/card';
+import { TriStateCheckboxModule, ConfirmDialogModule } from 'primeng';
+
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   imports: [
-    NgHttpLoaderModule,
     FormsModule,
     ReactiveFormsModule,
-    DadosCadastroModule,
     CommonModule,
     CardModule,
     AccordionModule,
@@ -88,7 +79,6 @@ registerLocaleData(localePt, 'pt-BR');
     BreadcrumbModule,
     ButtonModule,
     CalendarModule,
-    PrimeNgCalendarMaskModule,
     CarouselModule,
     ChartModule,
     CheckboxModule,
@@ -105,7 +95,6 @@ registerLocaleData(localePt, 'pt-BR');
     FieldsetModule,
     FileUploadModule,
     GalleriaModule,
-    GrowlModule,
     InplaceModule,
     InputMaskModule,
     InputSwitchModule,
@@ -129,7 +118,6 @@ registerLocaleData(localePt, 'pt-BR');
     ProgressBarModule,
     RadioButtonModule,
     RatingModule,
-    ScheduleModule,
     ScrollPanelModule,
     SelectButtonModule,
     SlideMenuModule,
@@ -148,18 +136,16 @@ registerLocaleData(localePt, 'pt-BR');
     TreeModule,
     TreeTableModule
   ],
-  declarations: [ErrorComponent
+  declarations: [
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
-    DadosCadastroModule,
     CheckboxModule,
     TriStateCheckboxModule,
     RadioButtonModule,
     CarouselModule,
     CalendarModule,
-    PrimeNgCalendarMaskModule,
     ConfirmDialogModule,
     CommonModule,
     ButtonModule,
@@ -178,7 +164,6 @@ registerLocaleData(localePt, 'pt-BR');
     BreadcrumbModule,
     ScrollPanelModule,
     SliderModule,
-    ErrorComponent,
     AutoCompleteModule,
     InputSwitchModule,
     MultiSelectModule,
@@ -186,15 +171,10 @@ registerLocaleData(localePt, 'pt-BR');
     OverlayPanelModule,
     InputMaskModule,
     PickListModule,
-    TooltipModule,
-    ScheduleModule,
-    PessoaFisicaModule,
-    DiaSemanaModule
+    TooltipModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    BreadcrumbService,
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     { provide: APP_BASE_HREF, useValue: '/' }
   ]

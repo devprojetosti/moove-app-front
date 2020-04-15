@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
     "downlevelIteration": true,
     "module": "esnext",
     "outDir": "./dist/out-tsc",
@@ -11,6 +11,17 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2015",
+    "paths": {
+      "@shared/*": [
+        "./app/shared/*"
+      ],
+      "@admin/*": [
+        "./app/admin/*"
+      ],
+      "@service/*": [
+        "./app/service/*"
+      ]
+    },
     "typeRoots": [
       "node_modules/@types"
     ],

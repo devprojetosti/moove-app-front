@@ -1,24 +1,25 @@
-import { TemasRoutes } from '@admin/administracao/temas/temas.routing';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared.module';
-import { TemasListComponent } from './pages/temas/components/temas-list/temas-list.component';
-import { TemasComponent } from './pages/temas/temas.component';
-import { TemaComponent } from './pages/tema/tema.component';
-import { TemasFilterComponent } from './pages/temas/components/temas-filter/temas-filter.component';
+import { UfsComponent } from './pages/ufs/ufs.component';
+import { UfsListComponent } from './pages/ufs/components/ufs-list/ufs-list.component';
+import { UfsFilterComponent } from './pages/ufs/components/ufs-filter/ufs-filter.component';
+import { FormComponentBase } from '@shared/form-component-base';
+import { UfComponent } from './pages/uf/uf.component';
+import { UfsRoutes } from './uf.routing';
 
 @NgModule({
   imports: [
     SharedModule,
     CommonModule,
-    RouterModule.forChild(TemasRoutes),
+    RouterModule.forChild(UfsRoutes)
   ],
   declarations: [
-    TemasComponent,
-    TemaComponent,
-    TemasListComponent,
-    TemasFilterComponent
+    UfComponent,
+    UfsComponent,
+    UfsListComponent,
+    UfsFilterComponent
     ]
 })
-export class TemasModule { }
+export class UfsModule { }

@@ -1,10 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import * as moment from 'moment';
-import { FormBase } from 'src/app/shared/form-base';
-import { AuthService } from 'src/app/service/core/auth.service';
-import { UfService } from 'src/app/component/uf/services/uf.service';
-import { AlertaService } from 'src/app/service/core/alerta.service';
+import { FormBase } from '@shared/form-base';
+import { AuthService } from '@service/core/auth.service';
+import { UfService } from 'app/component/uf/services/uf.service';
+import { AlertaService } from '@service/core/alerta.service';
 
 @Component({
   selector: 'app-ufs-filter',
