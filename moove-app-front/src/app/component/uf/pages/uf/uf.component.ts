@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { UfService } from '../../services/uf.service';
-import { FormBase } from 'src/app/shared/form-base';
-import { AlertaService } from 'src/app/service/core/alerta.service';
-import { BasicValidators } from 'src/app/shared/basic-validators';
 import { Uf } from '../../services/uf.interface';
+import { FormBase } from '@shared/form-base';
+import { AlertaService } from '@service/core/alerta.service';
+import { BasicValidators } from '@shared/basic-validators';
 
 @Component({
   selector: 'app-uf',
@@ -91,7 +91,6 @@ export class UfComponent extends FormBase implements OnInit {
             this.patchFormGroup(res);
           },
           err => {
-            this.handleErrorAlert(err);
           }
         );
       }

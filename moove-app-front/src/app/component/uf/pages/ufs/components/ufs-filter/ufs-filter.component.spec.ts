@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UfsFilterComponent } from './ufs-filter.component';
 
 
-describe('TemasFilterComponent', () => {
+describe('UfsFilterComponent', () => {
   let component: UfsFilterComponent;
   let fixture: ComponentFixture<UfsFilterComponent>;
 
