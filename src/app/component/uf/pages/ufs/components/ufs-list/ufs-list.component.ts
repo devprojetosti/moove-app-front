@@ -51,12 +51,7 @@ export class UfsListComponent extends PageBase implements OnInit {
   ngOnInit() {
     this.sortField = 'nome';
     this.sortOrder = 1;
-    this.load({
-      first: 0,
-      rows: 10,
-      sortField: this.sortField,
-      sortOrder: this.sortOrder
-    }, this.filterValues);
+    this.lazyLoad;
   }
 
   remove(id, index) {
@@ -87,6 +82,7 @@ export class UfsListComponent extends PageBase implements OnInit {
   }
 
   load(event: any, filtro) {
+    console.log('event');
     this.ufService
       .search(event.first, event.rows, event.sortField, event.sortOrder, filtro)
       .subscribe(

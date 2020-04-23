@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
     },
     {
-        path: '/component/uf',
+        path: '/ufs',
         title: 'UF',
         icon: 'mdi mdi-gauge',
         class: '',

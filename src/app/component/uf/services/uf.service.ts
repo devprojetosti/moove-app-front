@@ -20,7 +20,7 @@ UfService extends HttpCrudService {
     public servicos: ServicosService,
     protected auth: AuthService) {
     super(http, servicos, auth);
-    this.baseUrl = `${environment.baseUrl}api-sidi/administracao`;
+    this.baseUrl = `${environment.baseUrl}`;
   }
 
   public search(first, rows, sortField, sortOrder, filtro?): Observable<Uf[]> {
@@ -63,6 +63,16 @@ UfService extends HttpCrudService {
       .get(url)
       .pipe(
         catchError(err => this.handleError(err, () => this.findNext()))
+      );
+  }
+
+  public findAll(): Observable<any[]> {
+    const url = `${this.baseUrl}/uf/findAll`;
+    console.log(url);
+    return this.http
+      .get(url)
+      .pipe(
+        catchError(err => this.handleError(err, () => this.findAll()))
       );
   }
 

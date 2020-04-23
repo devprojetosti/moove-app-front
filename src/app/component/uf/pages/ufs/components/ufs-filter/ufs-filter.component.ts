@@ -31,11 +31,6 @@ export class UfsFilterComponent extends FormBase implements OnInit {
 
   ngOnInit() {
     this.setForm();
-    if (this.auth.usuario.perfil === 'ADMINISTRADOR') {
-      this.form.get('dataInicial').setValue(new Date());
-      const dataFinal = moment();
-      this.form.get('dataFinal').setValue(moment().add(30, 'days').toDate());
-    }
     this.filtrar();
   }
 
