@@ -22,6 +22,7 @@ import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
 import { TabView, TabViewModule, CardModule } from 'primeng';
 import { UfsModule } from './component/uf/uf.module';
+import { SharedModule } from '@shared/shared.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true,
@@ -50,7 +51,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         ChartsModule,
         TabViewModule,
         UfsModule,
-        CardModule
+        CardModule,
+        SharedModule
     ],
     providers: [
         {

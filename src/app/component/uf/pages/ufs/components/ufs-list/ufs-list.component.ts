@@ -87,7 +87,9 @@ export class UfsListComponent extends PageBase implements OnInit {
       .search(event.first, event.rows, event.sortField, event.sortOrder, filtro)
       .subscribe(
         res => {
-          this.data = res['content'];
+          this.data = res;
+          console.log('res', res);
+          console.log('this.data', this.data);
           this.totalElements = res['totalElements'];
         },
         err => {

@@ -22,7 +22,9 @@
               "src/favicon.ico"
             ],
             "styles": [
+              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
               "src/assets/scss/style.scss"
             ],
             "scripts": []
@@ -79,7 +81,9 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": [
+              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.css",
+              "node_modules/primeng/resources/themes/rhea/theme.css",
               "src/assets/scss/style.scss"
             ],
             "assets": [

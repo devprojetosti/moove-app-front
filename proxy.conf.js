@@ -1,8 +1,8 @@
 const proxy = [
   {
-    context: '/api',
+    context: '/moove',
     target: 'http://localhost:8080',
-    pathRewrite: { '^/api': '' }
+    pathRewrite: { '^/moove': '' }
   }
 ];
 module.exports = proxy;

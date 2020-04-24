@@ -8,12 +8,14 @@ import { UfsFilterComponent } from './pages/ufs/components/ufs-filter/ufs-filter
 import { FormComponentBase } from '@shared/form-component-base';
 import { UfComponent } from './pages/uf/uf.component';
 import { UfsRoutes } from './uf.routing';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     SharedModule,
     CommonModule,
-    RouterModule.forChild(UfsRoutes)
+    RouterModule.forChild(UfsRoutes),
+    FormsModule
   ],
   declarations: [
     UfComponent,
