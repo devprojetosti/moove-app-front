@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
@@ -29,11 +29,6 @@ UfService extends HttpCrudService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
     const params = { first: first, rows: rows, sortField: sortField, sortOrder: sortOrder };
-    console.log('url', url);
-    console.log('params', params);
-    console.log('filtro', filtro);
-    console.log('retorno da chamada service', this.http
-    .get<any[]>(url, { 'params': params }));
     if (filtro) {
       for (const e in filtro) {
         if (e) {
@@ -94,13 +89,14 @@ UfService extends HttpCrudService {
       );
   }
 
-  public remover(codigo: number) {
+  public remove(codigo: number) {
     const url = `${this.baseUrl}/uf/` + codigo;
     return this.http
-      .delete(url)
-      .pipe(
-        catchError(err => this.handleError(err, () => this.remover(codigo)))
-      );
+    .delete(url)
+    .pipe(
+      shareReplay(1),
+      catchError(err => this.handleError(err, () => this.remover(codigo)))
+    );
   }
 
 }

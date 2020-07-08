@@ -9,7 +9,7 @@ import { UfService } from 'app/component/uf/services/uf.service';
   selector: 'app-ufs-list',
   templateUrl: './ufs-list.component.html',
   styleUrls: ['./ufs-list.component.css'],
-  providers: [AuthService]
+  providers: []
 })
 export class UfsListComponent extends PageBase implements OnInit {
 
@@ -55,6 +55,8 @@ export class UfsListComponent extends PageBase implements OnInit {
   }
 
   remove(id, index) {
+    console.log('id', id);
+    console.log('index', index);
     this.confirmationService.confirm({
       message: 'Confirma a exclusão?',
       accept: () => {
@@ -64,7 +66,7 @@ export class UfsListComponent extends PageBase implements OnInit {
   }
 
   private confirmarRemocao(id: number, index: number) {
-    this.ufService.remover(id).subscribe(
+    this.ufService.remove(id).subscribe(
       res => {
         this.alertaService.showSuccess('Exclusão concluída');
         this.data.splice(index, 1);
@@ -88,9 +90,8 @@ export class UfsListComponent extends PageBase implements OnInit {
       .subscribe(
         res => {
           this.data = res;
-          console.log('res', res);
           console.log('this.data', this.data);
-          this.totalElements = res['totalElements'];
+          this.totalElements = res.length;
         },
         err => {
           this.data = [];

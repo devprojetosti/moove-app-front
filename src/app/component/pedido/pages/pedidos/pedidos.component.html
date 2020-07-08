@@ -1,0 +1,10 @@
+<div class="ui-row">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <app-pedidos-filter (filtro)="filtrar($event)"></app-pedidos-filter>
+        </div>
+        <div class="ui-g-12">
+            <app-pedidos-list [filtro]="filtro"></app-pedidos-list>
+        </div>
+    </div>
+</div>

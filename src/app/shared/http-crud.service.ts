@@ -69,6 +69,7 @@ export abstract class HttpCrudService extends HttpService {
 
   protected handleError(error: any, callback: () => Observable<any>) {
     console.error(error);
+    console.log('abcdfef');
     if (error.status === 401) { // Token expired
       return this.auth.refreshToken().pipe(
         switchMap((res: any) => {

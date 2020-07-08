@@ -1,0 +1,40 @@
+<p-dialog header="Adiar etapa"
+    [(visible)]="visible"
+    [responsive]="true"
+    [draggable]="true"
+    [resizable]="false"
+    [contentStyle]="{'overflow': 'visible', 'height': '500px'}"
+    [modal]="true"
+    appendTo="body"
+    (onHide)="cancelar();"
+    (onShow)="centerDialog();">
+    <form [formGroup]="form"
+        (submit)="confirmar()"
+        novalidate>
+        <div class="ui-g" style="width: 600px;">
+            <div class="ui-g-12">
+                <label style="float:left; margin-top:5px;">Nova Data:</label>
+                <p-calendar 
+                    formControlName="novaData"
+                    dateFormat="dd/mm/yy"
+                    [yearNavigator]="true"
+                    [monthNavigator]="true"
+                    yearRange="2019:2030"
+                    [locale]="pt"></p-calendar>
+            </div>
+            <div class="ui-g-12">
+                <label
+                style="float:left; margin-top:5px;">Motivo do adiamento:</label>
+                <input 
+                    type="text"
+                    formControlName="novaDescricao"
+                    style="width:100%;"
+                    pInputText />
+            </div>
+            <button type="button" pButton icon="fa fa-check" label="Confirmar" 
+            (click)="confirmar()"></button>
+            <button type="button" pButton icon="fa fa-close" label="Voltar" style="float:left;" 
+              (click)="close($event);"></button>
+        </div>  
+    </form>
+</p-dialog>

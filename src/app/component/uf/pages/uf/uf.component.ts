@@ -10,7 +10,6 @@ import { BasicValidators } from '@shared/basic-validators';
 @Component({
   selector: 'app-uf',
   templateUrl: './uf.component.html',
-  styleUrls: ['./uf.component.css'],
   providers: [UfService]
 })
 export class UfComponent extends FormBase implements OnInit {
@@ -51,10 +50,10 @@ export class UfComponent extends FormBase implements OnInit {
     this.clearErrors();
     this.validateForm();
     if (this.form.valid) {
-      const tema = this.form.getRawValue();
-      this.ufService.save(tema).subscribe(
+      const uf = this.form.getRawValue();
+      this.ufService.save(uf).subscribe(
         () => {
-          this.router.navigate(['/temas']);
+          this.router.navigate(['/ufs']);
           this.alertaService.showSuccess('Registro salvo com sucesso');
         },
         err => {

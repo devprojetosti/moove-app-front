@@ -1,0 +1,106 @@
+<p-confirmDialog header="Confirma exclusão?" icon="fa fa-trash-o" #cd>
+  <p-footer>
+    <button type="button" pButton icon="fa fa-check" label="Remover" (click)="cd.accept()"></button>
+    <button type="button" class="danger-btn" pButton icon="fa fa-close" label="Cancelar" (click)="cd.reject()"></button>
+  </p-footer>
+</p-confirmDialog>
+<div class="row">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title"><span class="lstick"></span>Pedidos</h4>
+              <div class="table-responsive">
+                  <p-table #table
+                    [scrollable]="true"
+                    [columns]="cols"
+                    [value]="data"
+                    [rows]="10"
+                    dataKey="id"
+                    [paginator]="totalElements > 10"
+                    [totalRecords]="totalElements"
+                    [responsive]="true"
+                    paginatorPosition="bottom"
+                    [sortField]="sortField"
+                    [sortOrder]="sortOrder"
+                    [lazy]="true"
+                    (onLazyLoad)="lazyLoad($event)"
+                    [loading]="loading">
+                    <ng-template pTemplate="caption">Resultado da pesquisa</ng-template>
+                    <ng-template pTemplate="header"
+                      let-columns>
+                      <tr>
+                        <ng-container *ngFor="let col of columns">
+                          <th
+                            *ngIf="col.sortable"
+                            [class]="col.styleClass"
+                            [pSortableColumn]="col.sortField ? col.sortField : col.field">
+                            {{col.header}}
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                          </th>
+                          <th
+                            *ngIf="!col.sortable"
+                            class="myred"
+                            [class]="col.styleClass">
+                            {{col.header}}
+                          </th>
+                        </ng-container>
+                        <th style="text-align: center; width: 150px"></th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body"
+                      let-rowData
+                      let-columns="columns"
+                      let-i="rowIndex">
+                      <tr>
+                        <td [class]="col.styleClass" *ngFor="let col of columns">
+                          <ng-container>
+                            {{nested(rowData, col.field, col.converter)}}
+                          </ng-container>
+                        </td>
+                        <td style="text-align: center; width: 150px">
+                          <button 
+                            type="button"
+                            [routerLink]="['/pedidos/edit/', rowData['id']]"
+                            class="warning-btn"
+                            icon="fa fa-pencil-square-o"
+                            pTooltip="Editar"
+                            pButton></button>
+                          <button 
+                            type="button"
+                            (click)="remove(rowData['id'], i)"
+                            class="danger-btn"
+                            icon="fa fa-trash-o"
+                            pTooltip="Excluir"
+                            pButton></button>
+                        </td>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage"
+                      let-columns>
+                      <tr>
+                        <td [attr.colspan]="cols.length + 1">
+                          <h4 style="text-align: center">Nenhum registro encontrado.</h4>
+                        </td>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="footer">
+                      <tr>
+                        <td [attr.colspan]="cols.length+1" style="text-align: right">
+                          <p>Total de registros: {{ totalElements }}</p>
+                          <p>
+                            <button type="button"
+                              pButton
+                              icon="fa fa-file-o"
+                              iconPos="left"
+                              label="Download"
+                              (click)="table.exportCSV();"
+                              style="float: right; width: 130px; margin-top: 5px;"></button>
+                          </p>
+                        </td>
+                      </tr>
+                    </ng-template>
+                </p-table>
+              </div>
+          </div>
+      </div>
+  </div>

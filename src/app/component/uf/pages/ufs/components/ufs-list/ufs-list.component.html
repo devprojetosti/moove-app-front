@@ -1,3 +1,9 @@
+<p-confirmDialog header="Confirma exclusão?" icon="fa fa-trash-o" #cd>
+  <p-footer>
+    <button type="button" pButton icon="fa fa-check" label="Remover" (click)="cd.accept()"></button>
+    <button type="button" class="danger-btn" pButton icon="fa fa-close" label="Cancelar" (click)="cd.reject()"></button>
+  </p-footer>
+</p-confirmDialog>
 <div class="row">
   <div class="col-md-12">
       <div class="card">
@@ -51,21 +57,21 @@
                             {{nested(rowData, col.field, col.converter)}}
                           </ng-container>
                         </td>
-                        <td style="text-align: center; width: 120px">
+                        <td style="text-align: center; width: 200px">
                           <button type="button"
-                          [routerLink]="['/uf/view/', rowData['id']]"
+                            [routerLink]="['/ufs/view/', rowData['id']]"
                             class="info-btn"
                             icon="fa fa-search"
                             pTooltip="Visualizar"
                             pButton></button>
-                          <button *ngIf="rowData.excluido == false && this.auth.usuario.perfil === 'Administrador'" 
+                          <button 
                             type="button"
-                            [routerLink]="['/uf/edit/', rowData['id']]"
+                            [routerLink]="['/ufs/edit/', rowData['id']]"
                             class="warning-btn"
                             icon="fa fa-pencil-square-o"
                             pTooltip="Editar"
                             pButton></button>
-                          <button *ngIf="rowData.excluido == false && this.auth.usuario.perfil === 'Administrador'" 
+                          <button 
                             type="button"
                             (click)="remove(rowData['id'], i)"
                             class="danger-btn"

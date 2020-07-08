@@ -1,0 +1,129 @@
+<p-dialog header="Confirmar a conclusão?" [(visible)]="concluir"
+        [modal]="true" [responsive]="true" [minY]="70" 
+        [maximizable]="true" [baseZIndex]="10000" >
+    <i class="pi pi-ban" style="font-size: 2em" ></i> <label style="position: absolute; margin-left: 10px; margin-top: 5px;" >Confirmar a conclusão</label>
+  <p-footer>
+    <button type="button" pButton icon="fa fa-check" label="Concluir" (click)="confirmarConcluirEtapa()"></button>
+    <button type="button" class="danger-btn" pButton icon="fa fa-close" label="Cancelar" (click)="concluir = false"></button>
+  </p-footer>
+</p-dialog>
+<p-dialog header="Confirmar que a etapa não foi concluída?" [(visible)]="cancelarConclusao"
+        [modal]="true" [responsive]="true" [minY]="70" 
+        [maximizable]="true" [baseZIndex]="10000" >
+    <i class="pi pi-ban" style="font-size: 2em" ></i> <label style="position: absolute; margin-left: 10px; margin-top: 5px;" >Confirmar a conclusão</label>
+  <p-footer>
+    <button type="button" pButton icon="fa fa-check" label="Concluir" (click)="confirmarConcluirEtapa()"></button>
+    <button type="button" class="danger-btn" pButton icon="fa fa-close" label="Cancelar" (click)="cancelarConclusao = false"></button>
+  </p-footer>
+</p-dialog>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"><span class="lstick"></span>Acompanhamento de pedidos</h4>
+                <div class="table-responsive">
+                    <p-table #table
+                      [scrollable]="true"
+                      [columns]="cols"
+                      [value]="data"
+                      [rows]="10"
+                      dataKey="id"
+                      [paginator]="totalElements > 10"
+                      [totalRecords]="totalElements"
+                      [responsive]="true"
+                      paginatorPosition="bottom"
+                      [sortField]="sortField"
+                      [sortOrder]="sortOrder"
+                      [lazy]="true"
+                      (onLazyLoad)="lazyLoad($event)"
+                      [loading]="loading">
+                      <ng-template pTemplate="caption">Resultado da pesquisa</ng-template>
+                      <ng-template pTemplate="header"
+                        let-columns>
+                        <tr>
+                          <ng-container *ngFor="let col of columns">
+                            <th
+                              *ngIf="col.sortable"
+                              [class]="col.styleClass"
+                              [pSortableColumn]="col.sortField ? col.sortField : col.field">
+                              {{col.header}}
+                              <p-sortIcon [field]="col.field"></p-sortIcon>
+                            </th>
+                            <th
+                              *ngIf="!col.sortable"
+                              class="myred"
+                              [class]="col.styleClass">
+                              {{col.header}}
+                            </th>
+                          </ng-container>
+                          <th style="text-align: center; width: 150px"></th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body"
+                        let-rowData
+                        let-columns="columns"
+                        let-i="rowIndex">
+                        <tr>
+                          <td [class]="col.styleClass" *ngFor="let col of columns">
+                            <ng-container>
+                              {{nested(rowData, col.field, col.converter)}}
+                            </ng-container>
+                          </td>
+                          <td style="text-align: center; width: 150px">
+                            <button *ngIf="rowData['concluido'] === 'NAO'"
+                              type="button"
+                              (click)="adiarEtapa(rowData['id'], rowData['dataConclusao'], i)"
+                              class="danger-btn"
+                              icon="fa fa-calendar"
+                              pTooltip="Adiar etapa"
+                              pButton></button>
+                              <app-pedido-adiar [active]="mostraAdiarEtapa" 
+                                (select)="voltaAdiar($event)"
+                                (cancel)="fecharAdiar()" 
+                                [etapa]="etapaAdiar"></app-pedido-adiar>
+                            <button *ngIf="rowData['concluido'] === 'NAO'"
+                              type="button"
+                              (click)="concluirEtapa(rowData['id'], rowData['concluido'], i)"
+                              class="danger-btn"
+                              icon="fa fa-check"
+                              pTooltip="Concluir"
+                              pButton></button>
+                            <button *ngIf="rowData['concluido'] === 'SIM'"
+                              type="button"
+                              (click)="concluirEtapa(rowData['id'], rowData['concluido'], i)"
+                              class="danger-btn"
+                              icon="fa fa-times-circle"
+                              pTooltip="Cancelar conclusão"
+                              pButton></button>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage"
+                        let-columns>
+                        <tr>
+                          <td [attr.colspan]="cols.length + 1">
+                            <h4 style="text-align: center">Nenhum registro encontrado.</h4>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="footer">
+                        <tr>
+                          <td [attr.colspan]="cols.length+1" style="text-align: right">
+                            <p>Total de registros: {{ totalElements }}</p>
+                            <p>
+                              <button type="button"
+                                pButton
+                                icon="fa fa-file-o"
+                                iconPos="left"
+                                label="Download"
+                                (click)="table.exportCSV();"
+                                style="float: right; width: 130px; margin-top: 5px;"></button>
+                            </p>
+                          </td>
+                        </tr>
+                      </ng-template>
+                  </p-table>
+                </div>
+            </div>
+        </div>
+    </div>

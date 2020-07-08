@@ -1,0 +1,25 @@
+<form #filterForm
+    [formGroup]="form"
+    (submit)="filtrar()"
+    novalidate>
+    <h1>Cliente</h1>
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-6 ui-lg-3"
+            style="padding: 0">
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3"
+            style="padding: 0">
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-2">
+            <button 
+                pButton
+                type="button"
+                label="Adicionar"
+                class="ui-button-info"
+                icon="fa fa-plus"
+                routerLink="/clientes/edit"></button>
+        </div>
+    </div>
+</form>

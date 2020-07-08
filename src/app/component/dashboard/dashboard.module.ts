@@ -15,7 +15,7 @@ const routes: Routes = [
                 { title: 'Dashboard' }
             ]
         },
-        component: DashboardComponent
+        component: DashboardComponent 
     }
 ];
 

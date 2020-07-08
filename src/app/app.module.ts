@@ -17,12 +17,20 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
-import { Approutes } from './app-routing.module';
+import { Approutes, appRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
-import { TabView, TabViewModule, CardModule } from 'primeng';
+import { TabView, TabViewModule, CardModule, ConfirmDialogModule } from 'primeng';
 import { UfsModule } from './component/uf/uf.module';
 import { SharedModule } from '@shared/shared.module';
+import { PedidosModule } from './component/pedido/pedido.module';
+import { UsuariosModule } from './component/usuario/usuario.module';
+import { ClientesModule } from './component/cliente/cliente.module';
+import { HomeComponent } from './component/home/home.component';
+import { LoginComponent } from './component/login/login.component';
+import { AlertaComponent } from './component/alerta.component';
+import { RegisterComponent } from './component/register/register.component';
+import { AuthService } from '@service/core/auth.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true,
@@ -37,7 +45,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         FullComponent,
         NavigationComponent,
         BreadcrumbComponent,
-        SidebarComponent
+        AlertaComponent,
+        SidebarComponent,
+        HomeComponent,
+        LoginComponent,
+        RegisterComponent,
     ],
     imports: [
         CommonModule,
@@ -51,14 +63,20 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         ChartsModule,
         TabViewModule,
         UfsModule,
+        PedidosModule,
+        UsuariosModule,
+        ClientesModule,
         CardModule,
-        SharedModule
+        SharedModule,
+        ConfirmDialogModule,
+        appRoutingModule
     ],
     providers: [
         {
             provide: PERFECT_SCROLLBAR_CONFIG,
             useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-        }
+        },
+        AuthService
     ],
     bootstrap: [AppComponent]
 })

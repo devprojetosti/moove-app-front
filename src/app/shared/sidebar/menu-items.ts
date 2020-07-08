@@ -2,9 +2,9 @@ import { RouteInfo } from './sidebar.metadata';
 
 export const ROUTES: RouteInfo[] = [
     {
-        path: '/dashboard',
-        title: 'Home',
-        icon: 'mdi mdi-gauge',
+        path: '/pedidos',
+        title: 'Pedido',
+        icon: 'mdi mdi-folder',
         class: '',
         label: '',
         labelClass: '',
@@ -12,8 +12,38 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
     },
     {
-        path: '/ufs',
-        title: 'UF',
+        path: '/usuarios',
+        title: 'Usuário',
+        icon: 'mdi mdi-contacts',
+        class: '',
+        label: '',
+        labelClass: '',
+        extralink: false,
+        submenu: []
+    },
+    {
+        path: '/clientes',
+        title: 'Cliente',
+        icon: 'mdi mdi-eye-outline',
+        class: '',
+        label: '',
+        labelClass: '',
+        extralink: false,
+        submenu: []
+    },
+    {
+        path: '/pedidos/relatorioesquadriascliente',
+        title: 'Relatório do Andamento de Pedido',
+        icon: 'mdi mdi-content-paste',
+        class: '',
+        label: '',
+        labelClass: '',
+        extralink: false,
+        submenu: []
+    },
+    {
+        path: '/pedidos/relatorioclientes',
+        title: 'Pedidos com produção em andamento',
         icon: 'mdi mdi-gauge',
         class: '',
         label: '',

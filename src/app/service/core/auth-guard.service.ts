@@ -8,24 +8,19 @@ import { AuthService } from './auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private auth: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return new Observable<boolean>(
-      observer => {
-        if (this.auth.usuario && this.auth.menus) {
-          if (this.auth.colaborador) {
-            observer.next(true);
-          } else {
-            this.auth.configurarColaborador().subscribe(() => { observer.next(true); });
-          }
-        } else {
-          this.auth.logout();
-          return observer.next(false);;
-        }
-      }
-    );
-    
-  }
+    const currentUser = this.authService.currentUserValue;
+    console.log('this.authService.currentUserValue', this.authService.currentUserValue)
+    if (currentUser) {
+        // authorised so return true
+        return true;
+    }
+
+    // not logged in so redirect to login page with the return url
+    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+    return false;
+}
 }
